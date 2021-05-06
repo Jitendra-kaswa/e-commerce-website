@@ -1,8 +1,9 @@
 const express = require('express');
 const router  =express.Router();
+const path = require('path');
 
 router.get('/',(req,res)=>{
-    res.send('Hello Friends');
+    res.sendFile(path.join(__dirname,'../index.html'));
 })
 router.use('/products',require('./products'));
 

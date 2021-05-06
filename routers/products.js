@@ -1,9 +1,23 @@
 const express = require('express');
-const router  =express.Router();
+const router  = express.Router();
+const multer  = require('multer');
+const path  = require('path');
 const productsController = require('../controllers/productsController');
-router.get('/',(req,res)=>{
-    res.send('Hello Ganduo');
-})
-router.get('/getall',productsController.getAll);
 
+var Storage = multer.diskStorage({ // this is to send the file and get file name 
+    destination:'./assets/uploads',
+    filename:(req,file,callbackFunction)=>{
+        callbackFunction(null,file.fieldname+'_'+Date.now()+path.extname(file.originalname));
+    }
+})
+
+var upload = multer({ // this is the middleware 
+    storage:Storage // this function is defined above
+}).single('product_image'); // this name is same as given in the form while getting the data
+
+router.post('/addProduct',upload,productsController.addProduct);
+
+router.get('/a',(req,res)=>{
+    return res.send("Hiii");
+})
 module.exports = router;

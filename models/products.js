@@ -13,14 +13,15 @@ const ProductsSchema = new mongoose.Schema({
         required:'true'
     },
     image_url:{
-        type:String
+        type:String,
+        default:'default.png'
     },
     description:{
         type:String
     },
     created_at:{
         type: Date,
-        default:Date.now
+        default:Date.now()
     }
 });
 
