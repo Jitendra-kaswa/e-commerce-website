@@ -20,7 +20,7 @@ module.exports.updateById = async (req,res)=>{
         description:req.body.description
     },{new:true});
     
-    if(req.file.filename){
+    if(req.file){
         await Products.findByIdAndUpdate(req.body.prod_id,{
             image_url:req.file.filename
         },{new:true});
