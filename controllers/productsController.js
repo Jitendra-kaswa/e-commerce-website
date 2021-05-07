@@ -9,7 +9,7 @@ module.exports.addProduct = async(req,res)=>{
         description:req.body.description,
         created_at:req.body.created_at
     });
-    return res.send("Product Added Successfully");
+    return res.redirect('/');
 }
 
 module.exports.getAll = async function(req,res){

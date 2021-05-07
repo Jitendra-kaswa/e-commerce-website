@@ -10,14 +10,13 @@ var Storage = multer.diskStorage({ // this is to send the file and get file name
         callbackFunction(null,file.fieldname+'_'+Date.now()+path.extname(file.originalname));
     }
 })
-
 var upload = multer({ // this is the middleware 
     storage:Storage // this function is defined above
-}).single('product_image'); // this name is same as given in the form while getting the data
-
+}).single('product_image'); // this name has to be same as given in the form while getting the data
 router.post('/addProduct',upload,productsController.addProduct);
 
-router.get('/a',(req,res)=>{
-    return res.send("Hiii");
+router.get('/addProduct',(req,res)=>{
+    return res.render('addproduct');
 })
+
 module.exports = router;

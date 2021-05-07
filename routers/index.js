@@ -3,8 +3,9 @@ const router  =express.Router();
 const path = require('path');
 
 router.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'../index.html'));
+    res.render('home');
 })
+router.use('/users',require('./users'));
 router.use('/products',require('./products'));
 
 module.exports = router;
