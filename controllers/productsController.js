@@ -12,22 +12,31 @@ module.exports.addProduct = async(req,res)=>{
     return res.redirect('/');
 }
 
-module.exports.getAll = async function(req,res){
-    let products  = await Products.find({}).exec();
-    return res.send({allProducts:products});
-}
-
-module.exports.getById = async (req,res)=>{
-    let product = await Products.findById(req.params.id).exec();
-    return res.send({product:product});
-}
-
 module.exports.updateById = async (req,res)=>{
-    let product = await Products.findByIdAndUpdate(req.params.id,{},{new:true});
-    return res.send({product:product});
+    await Products.findByIdAndUpdate(req.body.prod_id,{
+        name:req.body.name,
+        manufactured_by:req.body.manufactured_by,
+        price:req.body.price,
+        description:req.body.description
+    },{new:true});
+    
+    if(req.file.filename){
+        await Products.findByIdAndUpdate(req.body.prod_id,{
+            image_url:req.file.filename
+        },{new:true});
+    }
+    return res.redirect('/')
 }
 
 module.exports.removeById = async (req,res)=>{
     let product = await Products.findByIdAndRemove(req.params.id);
-    return 
+    return res.send("Prodect Removed Successfully");
+}
+
+module.exports.updatePage = async (req,res)=>{
+    
+    let prod = await Products.findById(req.params.id);
+    return res.render('updateProduct',{
+        product:prod
+    });
 }

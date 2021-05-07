@@ -1,0 +1,22 @@
+img{
+    max-width: 17rem;
+    padding: 0;
+    margin: 0;
+}
+.card-header{
+    padding: 0.5rem;
+    margin: 0;
+}
+.price-title{
+    color: black;
+}
+.company-title{
+    color: black;
+}
+.container-fluid{
+    display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+.card{
+    margin: 1rem;
+}
