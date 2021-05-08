@@ -24,4 +24,5 @@ router.get('/addProduct',(req,res)=>{
     return res.render('addproduct');
 })
 
+router.put('/like-dislike/:id',productsController.like_dislike);
 module.exports = router;

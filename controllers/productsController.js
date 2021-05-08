@@ -40,3 +40,8 @@ module.exports.updatePage = async (req,res)=>{
         product:prod
     });
 }
+
+module.exports.like_dislike = async(req,res)=>{
+    await Products.findByIdAndUpdate(req.params.id,{like:req.body.likes,dislike:req.body.dislikes});
+    return res.send("Successfully voted");
+}

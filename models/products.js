@@ -22,6 +22,14 @@ const ProductsSchema = new mongoose.Schema({
     created_at:{
         type: Date,
         default:Date.now()
+    },
+    like:{
+        type:Number,
+        default:0
+    },
+    dislike:{
+        type:Number,
+        default:0
     }
 });
 

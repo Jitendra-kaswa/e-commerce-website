@@ -4,6 +4,8 @@ const app = express();
 const path = require('path');
 const port = 8000;
 const db = require('./config/mongoose');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 app.set('view engine','ejs');
 app.set('views','./views');

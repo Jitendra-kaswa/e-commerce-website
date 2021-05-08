@@ -33,3 +33,4 @@ module.exports.register = async (req,res)=>{
     }
     return res.send("Please enter right Password");
 }
+
